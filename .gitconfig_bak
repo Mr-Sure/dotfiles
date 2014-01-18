@@ -22,3 +22,6 @@
 	added = yellow
 	changed = green
 	untracked = cyan
+[user]   
+	name = 代军
+	email = lujun.lj@alibaba-inc.com
