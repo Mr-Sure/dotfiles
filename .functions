@@ -145,16 +145,6 @@ function unidecode() {
 }
 
 
-
-# Launch installed browsers for a specific URL
-# Usage: browsers "http://www.google.com"
-function browsers(){
-	chrome $1
-	opera $1
-	firefox $1
-	safari $1	
-}
-
 # Browserstack shortcuts, now with added hotness thanks to the Browserstack team.
 # Note, a trial or paid for account is needed for this to work
 # Usage: ipad3 "http://www.google.com", win7ie8 "http://www.google.com" etc.
@@ -196,6 +186,10 @@ function gpush(){
 	git add .
 	git commit -m 'auto push'
 	
+}
+
+function gs(){
+	git status
 }
 
 function openurl(){
