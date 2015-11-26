@@ -200,63 +200,37 @@ function openurl(){
 	open -a google\ chrome ${url}
 }
 
-function androidnexus(){
-	local url="http://www.browserstack.com/start#os=android&os_version=4.0.3&device=Samsung+Galaxy+Nexus&zoom_to_fit=true&url=$1&start=true"
-	openurl $url $2
+function delremotebranch(){
+	git branch -r -d origin/$1
+	git push origin :$1
 }
 
-function ipad3(){
-	local url="http://www.browserstack.com/start#os=ios&os_version=5.1&device=iPad+3rd&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
+function delbranch(){
+       git branch -d $1	
 }
 
-function ipad3ios6(){
-	local url="http://www.browserstack.com/start#os=ios&os_version=6.1&device=iPad+3rd&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
+function push() {
+    currentBranch=`git rev-parse --abbrev-ref HEAD`
+    git add . 
+    git commit -m “$1”
+    git push -u origin $currentBranch
 }
 
-function ipad2(){
-	local url="http://www.browserstack.com/start#os=ios&os_version=5.1&device=iPad+2nd&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
+# git new version
+
+function version(){
+    git checkout -b daily/$1
 }
 
-function win7ie8(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=7&browser=IE&browser_version=8.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
+# git tag publish
 
-function win7ie9(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=7&browser=IE&browser_version=9.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
+function publish(){
+  
+    push
+    git tag publish/$1
+    git push origin publish/$1
+    git checkout master
+    git merge publish/$1
+    git push origin :daily/$1
 
-function win8ie10(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=8&browser=IE&browser_version=10.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
 }
-
-function winxpie8(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=XP&browser=IE&browser_version=8.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
-
-function winxpie7(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=XP&browser=IE&browser_version=7.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
-
-function winxpie6(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=XP&browser=IE&browser_version=6.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
-
-function win7chrome(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=7&browser=Chrome&browser_version=21.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
-
-function win7ff(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=7&browser=Firefox&browser_version=16.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
-
