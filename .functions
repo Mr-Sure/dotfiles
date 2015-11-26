@@ -231,6 +231,7 @@ function publish(){
     git push origin publish/$1
     git checkout master
     git merge publish/$1
+    git push origin master
     git push origin :daily/$1
 
 }
