@@ -213,7 +213,7 @@ function push() {
     currentBranch=`git rev-parse --abbrev-ref HEAD`
     git add . 
     git commit -m “$1”
-    git push -u origin $currentBranch
+    git push origin $currentBranch
 }
 
 # git new version
