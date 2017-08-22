@@ -226,7 +226,7 @@ function version(){
 
 function publish(){
   
-    push '$2'
+    push $2
     git tag publish/$1
     git push origin publish/$1
     git checkout master
