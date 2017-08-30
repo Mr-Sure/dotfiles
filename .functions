@@ -209,6 +209,11 @@ function delbranch(){
        git branch -d $1	
 }
 
+function pull() {
+    currentBranch=`git rev-parse --abbrev-ref HEAD`
+    git pull origin $currentBranch
+}
+
 function push() {
     currentBranch=`git rev-parse --abbrev-ref HEAD`
     git add . 
